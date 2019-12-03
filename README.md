@@ -12,7 +12,7 @@
 
 `composer create-project --prefer-dist laravel/laravel rwa`
 
-####.env file
+#### .env file
 
 `DB_DATABASE=rwa // Ime vase baze`
 
@@ -34,5 +34,32 @@
 
 
 `npm run dev` // Dev za debug nacin rada
-#####ili
+##### ili
 `npm run watch` // automatski osvjezava promjene css/js
+
+#### Migrcija za role
+
+`php artisan make:migration add_role_to_users_table`
+
+#### Middleware admin
+https://laracasts.com/discuss/channels/general-discussion/create-middleware-to-auth-admin-users?page=0
+
+`php artisan make:middleware IsAdmin`
+
+
+##### Ogranicavanje rute
+2 nacina
+
+1. Zastita rute direktno
+ 
+    routes/web.php
+
+        Route::middleware('auth', 'admin')->get('/home', 'HomeController@index');
+
+2. Zastita u kontroleru
+
+    app/Http/Controllers/HomeController.php
+
+        public function __construct() {
+            $this->middleware(['auth', 'admin']);
+        }

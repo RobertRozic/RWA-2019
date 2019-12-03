@@ -17,4 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Middleware auth - logiran
+// Middleware admin - admin
+Route::middleware('auth', 'admin')->get('/home', 'HomeController@index')->name('home');
+Route::get('/rezervacije', function () {
+    return view('rezervacije');
+});
