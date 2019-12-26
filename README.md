@@ -63,3 +63,78 @@ https://laracasts.com/discuss/channels/general-discussion/create-middleware-to-a
         public function __construct() {
             $this->middleware(['auth', 'admin']);
         }
+
+
+## Kreiranje modela
+
+    php artisan make:model Car -mcr
+
+-m = Migracija
+
+-c = Controller
+
+-r = Resource
+
+
+## Deploy na studentski server
+
+1. Logirati se na studenti.sum.ba posluzitelj
+
+    Username: fsreXXYYY
+    Password: csgiditalYYYY 
+    
+    *( XX broj grupe, YYYY godina)
+    
+2. Unutar vasega foldera odraditi git clone projekta s githuba, npr.
+
+        git clone https://github.com/RobertRozic-SUM/RWA-2019.git
+
+3. Napraviti link sa public foldera projecta na vas public folder na posluzitelju
+
+        ln -s /home/fsreXXYYY/ime-projekta/public  /home/fsreXXYYY/public
+        
+    *Ukoliko naredba javi da file vec postoji, odradite:
+    
+        rm -rf ~/public
+        
+     Pa zatim prethodnu naredbu
+            
+4. Unutar foldera aplikacije pokrenuti
+
+        composer install
+   
+   Za instalaciju composer paketa
+
+5. Zatim podesiti .env file
+
+    Primjer kopiramo u .env file
+
+        cp .env.example .env
+        
+    Podesimo bazu
+       
+        DB_DATABASE=fsreXXYYYY
+        DB_USERNAME=fsreXXYYYY
+        DB_PASSWORD=csdigitalYYYY
+
+    Generiramo key aplikacije
+    
+        php artisan key:generate
+
+6. Podesimo permisije
+
+        chgrp -R www-data storage bootstrap/cache
+        chmod -R ug+rwx storate bootstrap/cache
+    
+7. Unutar routes/web.php podesiti root link
+
+        URL::forceRootUrl('http://studenti.sum.ba/projekti/fsre/YYYY/gX');
+
+##### Aplikacija bi terbala biti dostupna na linku
+
+http://studenti.sum.ba/projekti/fsre/YYYY/gX
+
+
+## Tinker
+
+    php artisan tinker

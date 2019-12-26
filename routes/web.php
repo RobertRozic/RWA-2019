@@ -23,3 +23,7 @@ Route::middleware('auth', 'admin')->get('/home', 'HomeController@index')->name('
 Route::get('/rezervacije', function () {
     return view('rezervacije');
 });
+
+Route::resource('cars', 'CarController');
+Route::resource('brands', 'BrandController');
+//Route::get('cars', 'CarController@index');
