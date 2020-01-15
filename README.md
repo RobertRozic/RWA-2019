@@ -80,7 +80,7 @@ https://laracasts.com/discuss/channels/general-discussion/create-middleware-to-a
 
 1. Logirati se na studenti.sum.ba posluzitelj
 
-    Username: fsreXXYYY
+    Username: fsreXXYYYY
     Password: csgiditalYYYY 
     
     *( XX broj grupe, YYYY godina)
@@ -91,7 +91,7 @@ https://laracasts.com/discuss/channels/general-discussion/create-middleware-to-a
 
 3. Napraviti link sa public foldera projecta na vas public folder na posluzitelju
 
-        ln -s /home/fsreXXYYY/ime-projekta/public  /home/fsreXXYYY/public
+        ln -s /home/fsreXXYYYY/ime-projekta/public/  /home/fsreXXYYYY/public
         
     *Ukoliko naredba javi da file vec postoji, odradite:
     
@@ -124,13 +124,13 @@ https://laracasts.com/discuss/channels/general-discussion/create-middleware-to-a
 6. Podesimo permisije
 
         chgrp -R www-data storage bootstrap/cache
-        chmod -R ug+rwx storate bootstrap/cache
+        chmod -R ug+rwx storage bootstrap/cache
     
 7. Unutar routes/web.php podesiti root link
 
         URL::forceRootUrl('http://studenti.sum.ba/projekti/fsre/YYYY/gX');
 
-##### Aplikacija bi terbala biti dostupna na linku
+##### Aplikacija bi trebala biti dostupna na linku
 
 http://studenti.sum.ba/projekti/fsre/YYYY/gX
 
