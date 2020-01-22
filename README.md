@@ -128,11 +128,20 @@ https://laracasts.com/discuss/channels/general-discussion/create-middleware-to-a
     
 7. Unutar routes/web.php podesiti root link
 
-        URL::forceRootUrl('http://studenti.sum.ba/projekti/fsre/YYYY/gX');
+        URL::forceRootUrl('https://studenti.sum.ba/projekti/fsre/YYYY/gX');
 
+8. U app/Providers/AppServiceProvider.php u boot funckiju dodati
+
+         public function boot()
+            {
+        
+                if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&  $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+                     \URL::forceScheme('https');
+                }
+            }
 ##### Aplikacija bi trebala biti dostupna na linku
 
-http://studenti.sum.ba/projekti/fsre/YYYY/gX
+https://studenti.sum.ba/projekti/fsre/YYYY/gX
 
 
 ## Tinker
